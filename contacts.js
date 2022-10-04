@@ -14,6 +14,11 @@ async function getContactById(contactId) {
     const strContactId = String(contactId);
     const contacts = await getContacts();
     const contact = contacts.find((contact) => contact.id === strContactId);
+
+    if (!contact) {
+        return `\x1B[31m contact with id ${contactId} not found`;
+    }
+
     return contact;
 }
 
